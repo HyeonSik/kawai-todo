@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, StatusBar,
 import ToDo from './ToDo';
 
 const { height, width } = Dimensions.get("window");
+
 export default class App extends React.Component {
   state = {
     newTodo : ""
@@ -19,7 +20,7 @@ export default class App extends React.Component {
           value={newTodo} onChangeText={this._controlTodo}
           placeholderTextColor="#999" returnKeyType="done"
           autoCorrect={false}/>
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.toDos}>
             <ToDo />
           </ScrollView>
         </View>
@@ -74,5 +75,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "#bbb",
     borderBottomWidth: 1,
     fontSize: 25
+  },
+  toDos: {
+    alignItems: "center",
   }
 });
