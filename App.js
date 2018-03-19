@@ -21,7 +21,7 @@ export default class App extends React.Component {
           placeholderTextColor="#999" returnKeyType="done"
           autoCorrect={false}/>
           <ScrollView contentContainerStyle={styles.toDos}>
-            <ToDo />
+            <ToDo text={"Hello i'm hyunsik"}/>
           </ScrollView>
         </View>
       </View>
