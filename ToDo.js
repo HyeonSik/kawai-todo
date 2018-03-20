@@ -39,6 +39,7 @@ export default class Todo extends Component {
                     value={toDoValue} multiline={true} 
                     onChangeText={this._controllInput}
                     returnKeyType={"done"} 
+                    underlineColorAndroid={"transparent"}
                     onBlur={this._finishEditing}/>) : (
                     <Text style={[styles.text, isCompleted 
                     ? styles.completedText : styles.uncompleteText]}>{text}</Text>)}

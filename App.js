@@ -32,7 +32,8 @@ export default class App extends React.Component {
           <TextInput style={styles.input} placeholder="NEW TODO" 
           value={newToDo} onChangeText={this._controlTodo}
           placeholderTextColor="#999" returnKeyType="done"
-          autoCorrect={false} onSubmitEditing={this._addToDo} />
+          autoCorrect={false} onSubmitEditing={this._addToDo}
+          underlineColorAndroid={"transparent"} />
           <ScrollView contentContainerStyle={styles.toDos}>
             {Object.values(toDos).reverse().map(toDo => 
             <ToDo key={toDo.id} {...toDo} deleteToDo={this._deleteToDo} 
@@ -56,7 +57,7 @@ export default class App extends React.Component {
       const parseToDos = JSON.parse(toDos);
       this.setState({
         loadedToDos : true,
-        toDos : parseToDos
+        toDos : parseToDos || {}
       });
       console.log(toDos);
     } catch(err) {
