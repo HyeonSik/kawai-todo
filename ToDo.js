@@ -17,7 +17,10 @@ export default class Todo extends Component {
         text : Proptypes.string.isRequired,
         isCompleted : Proptypes.bool.isRequired,
         deleteToDo : Proptypes.func.isRequired,
-        id : Proptypes.string.isRequired
+        id : Proptypes.string.isRequired,
+        completeToDo : Proptypes.func.isCompleted,
+        uncompleteToDo : Proptypes.func.isCompleted,
+        updateToDo : Proptypes.func.isRequired
     };
 
     render() {
@@ -68,11 +71,12 @@ export default class Todo extends Component {
     }
 
     _toggleComplete = () => {
-        this.setState(prevState => {
-            return({
-                isCompleted : !prevState.isCompleted
-            });
-        })
+        const {isCompleted, completeToDo, uncompleteToDo, id} = this.props;
+        if(isCompleted) {
+            uncompleteToDo(id);
+        } else {
+            completeToDo(id);
+        }
     }
 
     _startEditing = () => {
@@ -82,6 +86,11 @@ export default class Todo extends Component {
     }
 
     _finishEditing = () => {
+        const {toDoValue} = this.state;
+        const {id, updateToDo} = this.props;
+        
+        updateToDo(id, toDoValue);
+
         this.setState({
             isEditing : false
         })
