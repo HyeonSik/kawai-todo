@@ -11,8 +11,7 @@ export default class App extends React.Component {
   state = {
     newToDo : "",
     loadedToDos : false,
-    toDos : {
-    }
+    toDos : {}
   };
 
   componentDidMount = () => {
